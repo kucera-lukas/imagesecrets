@@ -21,12 +21,11 @@ def return_user() -> User:
     """Return a fake database user entry."""
     from image_secrets.backend.database.user.models import User
 
-    user = User(
+    return User(
         username="test_usernamne",
         email="test_email@example.com",
         password_hash="test_hash",
     )
-    return user
 
 
 @pytest.fixture()

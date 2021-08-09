@@ -52,8 +52,8 @@ def test_patch(
     header = auth_token[0]
     user = auth_token[1]
 
-    assert not user.username == username
-    assert not user.email == email
+    assert user.username != username
+    assert user.email != email
 
     response = api_client.patch(
         URL,
