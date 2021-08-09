@@ -39,11 +39,10 @@ def token() -> Token:
     """Return an encoded image."""
     from image_secrets.backend.database.token import models
 
-    t = models.Token(
+    return models.Token(
         token_hash="test_hash",
         owner_id=2,
     )
-    return t
 
 
 @pytest.fixture()

@@ -23,11 +23,10 @@ if TYPE_CHECKING:
 @pytest.fixture()
 def mock_from_orm(mocker: MockFixture):
     """Return mocked schemas.Image.from_orm function."""
-    from_orm = mocker.patch(
+    return mocker.patch(
         "image_secrets.backend.database.image.schemas.Image.from_orm",
         return_value="test_image",
     )
-    return from_orm
 
 
 @pytest.fixture()
@@ -35,12 +34,11 @@ def image_create() -> ImageCreate:
     """Return an ``ImageCreate`` schema."""
     from image_secrets.backend.database.image import schemas
 
-    create = schemas.ImageCreate(
+    return schemas.ImageCreate(
         message="test_message",
         image_name="test_name",
         filename="test_filename.png",
     )
-    return create
 
 
 @pytest.fixture()
@@ -48,14 +46,13 @@ def decoded_image() -> DecodedImage:
     """Return a decoded image."""
     from image_secrets.backend.database.image import models
 
-    image = models.DecodedImage(
+    return models.DecodedImage(
         filename="test_filename.png",
         image_name="test_image_name",
         message="test_message",
         delimiter="test_delimiter",
         lsb_amount=2,
     )
-    return image
 
 
 @pytest.fixture()
@@ -63,14 +60,13 @@ def encoded_image() -> EncodedImage:
     """Return an encoded image."""
     from image_secrets.backend.database.image import models
 
-    image = models.EncodedImage(
+    return models.EncodedImage(
         filename="test_filename.png",
         image_name="test_image_name",
         message="test_message",
         delimiter="test_delimiter",
         lsb_amount=2,
     )
-    return image
 
 
 @pytest.fixture()

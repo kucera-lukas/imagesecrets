@@ -20,12 +20,11 @@ def user() -> User:
     """Return an user."""
     from image_secrets.backend.database.user import models
 
-    user = models.User(
+    return models.User(
         username="test_username",
         email="test_email@test.conm",
         password_hash="test_hash",
     )
-    return user
 
 
 @pytest.fixture()
