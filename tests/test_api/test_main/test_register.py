@@ -46,7 +46,12 @@ def mock_user_crud_create(mocker: MockFixture, return_user: User):
         ("123456", "user@string.com", "secret!!"),
     ],
 )
-def test_ok(api_client: TestClient, username: str, email: str, password: str) -> None:
+def test_ok(
+    api_client: TestClient,
+    username: str,
+    email: str,
+    password: str,
+) -> None:
     """Test successful post request on the register route."""
     response = api_client.post(
         URL,

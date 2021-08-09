@@ -12,7 +12,10 @@ if TYPE_CHECKING:
 
     from pytest_mock import MockFixture
 
-    from image_secrets.backend.database.image.models import DecodedImage, EncodedImage
+    from image_secrets.backend.database.image.models import (
+        DecodedImage,
+        EncodedImage,
+    )
     from image_secrets.backend.database.image.schemas import ImageCreate
     from image_secrets.backend.database.user.models import User
 
@@ -113,7 +116,10 @@ async def test_create_decoded(
 
     assert isinstance(result, models.DecodedImage)
     assert result == decoded_image
-    mock_create_decoded.assert_called_once_with(owner_id=0, **image_create.dict())
+    mock_create_decoded.assert_called_once_with(
+        owner_id=0,
+        **image_create.dict(),
+    )
 
 
 @pytest.mark.asyncio
@@ -129,7 +135,10 @@ async def test_create_encoded(
 
     assert isinstance(result, models.EncodedImage)
     assert result == encoded_image
-    mock_create_encoded.assert_called_once_with(owner_id=0, **image_create.dict())
+    mock_create_encoded.assert_called_once_with(
+        owner_id=0,
+        **image_create.dict(),
+    )
 
 
 @pytest.mark.asyncio
@@ -233,7 +242,10 @@ async def test__get_encoded_with_unknown_name(
 
 
 @pytest.mark.asyncio
-async def test_get_decoded_no_name(mock_get: AsyncMock, insert_user: User) -> None:
+async def test_get_decoded_no_name(
+    mock_get: AsyncMock,
+    insert_user: User,
+) -> None:
     """Test the get_decoded function without specifying image_name."""
     result = await crud.get_decoded(user=insert_user)
 
@@ -264,7 +276,10 @@ async def test_get_decoded_with_name(
 
 
 @pytest.mark.asyncio
-async def test_get_encoded_no_name(mock_get: AsyncMock, insert_user: User) -> None:
+async def test_get_encoded_no_name(
+    mock_get: AsyncMock,
+    insert_user: User,
+) -> None:
     """Test the get_decoded function without specifying image_name."""
     result = await crud.get_encoded(user=insert_user)
 

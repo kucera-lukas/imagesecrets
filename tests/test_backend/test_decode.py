@@ -37,7 +37,10 @@ def test_prepare_array_raises(lsb_n: int):
         decode.prepare_array(..., lsb_n, ...)
 
 
-@pytest.mark.parametrize("text", ["", " ", "hello", "987654321", "~!@#$%^&*()_"])
+@pytest.mark.parametrize(
+    "text",
+    ["", " ", "hello", "987654321", "~!@#$%^&*()_"],
+)
 def test_decode_text(text: str) -> None:
     """Test the decode text function."""
     ascii_msg = map(ord, f"{text}dlm___decode noise")
@@ -72,7 +75,10 @@ def test_decode_text_raises(
 def test_main(mocker: MockFixture, delimiter: str, lsb_n: int) -> None:
     """Test the main function."""
     arr = np.fromiter(map(ord, f"Hello{lsb_n}{delimiter}"), dtype=np.uint8)
-    mocker.patch("image_secrets.backend.decode.prepare_array", return_value=arr)
+    mocker.patch(
+        "image_secrets.backend.decode.prepare_array",
+        return_value=arr,
+    )
     result = decode.main(
         ...,
         delimiter,
@@ -103,7 +109,10 @@ def test_api(
         "image_secrets.backend.util.image.data",
         return_value=(..., "array"),
     )
-    main = mocker.patch("image_secrets.backend.decode.main", retuen_value="Message")
+    main = mocker.patch(
+        "image_secrets.backend.decode.main",
+        retuen_value="Message",
+    )
     save_array = mocker.patch(
         "image_secrets.backend.util.image.save_array",
         return_value=tmpdir / "image.png",

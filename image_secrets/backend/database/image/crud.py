@@ -25,7 +25,7 @@ async def _get(
     await user.fetch_related(relation)
     field = getattr(user, relation)
 
-    images = [
+    return [
         # not using ``from_tortoise_orm`` because it would try to prefetch the owner FK relation
         # resulting in a very messy result
         # every image would have their ``owner`` field
@@ -42,12 +42,10 @@ async def _get(
         }
     ]
 
-    return images
-
 
 async def get_decoded(
     user: User,
-    image_name: Optional[str] = None,
+    image_name: str | None = None,
 ) -> list[Optional[models.Image]]:
     """Return User decoded images stored in database.
 
@@ -55,12 +53,16 @@ async def get_decoded(
     :param image_name: Optional name of the images to return
 
     """
-    return await _get(relation="decoded_images", user=user, image_name=image_name)
+    return await _get(
+        relation="decoded_images",
+        user=user,
+        image_name=image_name,
+    )
 
 
 async def get_encoded(
     user: User,
-    image_name: Optional[str] = None,
+    image_name: str | None = None,
 ) -> list[Optional[models.Image]]:
     """Return User encoded images stored in database.
 
@@ -68,7 +70,11 @@ async def get_encoded(
     :param image_name: Optional name of the images to return
 
     """
-    return await _get(relation="encoded_images", user=user, image_name=image_name)
+    return await _get(
+        relation="encoded_images",
+        user=user,
+        image_name=image_name,
+    )
 
 
 async def create_decoded(

@@ -1,7 +1,6 @@
 """Test the reset password post request."""
 from __future__ import annotations
 
-from json import JSONDecodeError
 from typing import TYPE_CHECKING
 
 import pytest

@@ -13,7 +13,11 @@ from PIL import Image
 from tortoise.contrib.test import finalizer, initializer
 
 from image_secrets.api import config as config_
-from image_secrets.backend.database import image_models, token_models, user_models
+from image_secrets.backend.database import (
+    image_models,
+    token_models,
+    user_models,
+)
 from image_secrets.backend.util import main
 
 if TYPE_CHECKING:
@@ -23,7 +27,10 @@ if TYPE_CHECKING:
     from pytest_mock import MockFixture
 
     from image_secrets.api.config import Settings
-    from image_secrets.backend.database.image.models import DecodedImage, EncodedImage
+    from image_secrets.backend.database.image.models import (
+        DecodedImage,
+        EncodedImage,
+    )
     from image_secrets.backend.database.user.models import User
     from image_secrets.backend.util.main import ParsedIntegrity
 
@@ -88,7 +95,7 @@ def patch_tasks(request, monkeypatch, api_settings: Settings) -> None:
 
 
 @pytest.fixture(scope="function", autouse=True)
-def email_client(request, api_settings: Settings) -> Optional[FastMail]:
+def email_client(request, api_settings: Settings) -> FastMail | None:
     """Return test email client."""
     if "disable_autouse" in set(request.keywords):
         return
@@ -104,7 +111,10 @@ def email_client(request, api_settings: Settings) -> Optional[FastMail]:
 
 
 @pytest.fixture(scope="function")
-def api_client(request, api_settings: Settings) -> Generator[TestClient, None, None]:
+def api_client(
+    request,
+    api_settings: Settings,
+) -> Generator[TestClient, None, None]:
     """Return api test client connected to fake database."""
     # settings already patched by fixture
     from image_secrets.api.interface import app
@@ -149,7 +159,10 @@ def auth_token(
     mocker.patch("image_secrets.backend.password.auth", return_value=True)
     response = api_client.post(
         "/users/login",
-        data={"username": insert_user.username, "password": insert_user.password_hash},
+        data={
+            "username": insert_user.username,
+            "password": insert_user.password_hash,
+        },
     ).json()
 
     token_header = {
@@ -210,12 +223,18 @@ def api_image_file(
 ) -> dict[str, tuple[str, bytes, str]]:
     """Return the dict with file needed to use post requests."""
     return {
-        "file": (test_image_path.name, test_image_path.open("rb").read(), "image/png"),
+        "file": (
+            test_image_path.name,
+            test_image_path.open("rb").read(),
+            "image/png",
+        ),
     }
 
 
 @pytest.fixture(scope="session")
-def test_image_array(test_image_path: Path) -> Generator[ArrayLike, None, None]:
+def test_image_array(
+    test_image_path: Path,
+) -> Generator[ArrayLike, None, None]:
     """Return numpy array of the test image."""
     with Image.open(test_image_path).convert("RGB") as img:
         yield np.asarray(img, dtype=np.uint8)

@@ -5,7 +5,7 @@ import functools as fn
 import math
 import re
 import secrets
-from typing import TYPE_CHECKING, Any, Iterable, NamedTuple, Optional, Type, TypeVar
+from typing import TYPE_CHECKING, Any, NamedTuple, Optional, Type, TypeVar
 
 from image_secrets.backend.regex import INTEGRITY_FIELD
 
@@ -16,7 +16,11 @@ if TYPE_CHECKING:
 _T = TypeVar("_T")
 
 
-def partial_init(cls: Type[_T], *args: Optional[Any], **kwargs: Optional[Any]) -> _T:
+def partial_init(
+    cls: Type[_T],
+    *args: Optional[Any],
+    **kwargs: Optional[Any],
+) -> _T:
     """Partially instantiate a class initializer.
 
     :param cls: The class to instantiate

@@ -36,7 +36,10 @@ router = APIRouter(
     tags=["users"],
     dependencies=[Depends(dependencies.get_config)],
 )
-manager = LoginManager(secret=config.secret_key, token_url=f"{router.prefix}/login")
+manager = LoginManager(
+    secret=config.secret_key,
+    token_url=f"{router.prefix}/login",
+)
 manager.not_authenticated_exception = NotAuthenticated
 
 
@@ -163,7 +166,9 @@ async def forgot_password(
 
     """
     try:
-        user_id = await crud.get_id(crud.DBIdentifier(column="email", value=user_email))
+        user_id = await crud.get_id(
+            crud.DBIdentifier(column="email", value=user_email),
+        )
     except DoesNotExist:
         # mimic waiting time of token creation
         await asyncio.sleep(1)

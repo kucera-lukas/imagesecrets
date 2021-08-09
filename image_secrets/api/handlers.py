@@ -32,7 +32,7 @@ async def handler(
     status_code: int,
     message: str,
     field: str,
-    value: Optional[str] = None,
+    value: str | None = None,
     headers: Optional[dict[Any, Any]] = None,
 ) -> JSONResponse:
     """Create a json response.
@@ -54,7 +54,10 @@ async def handler(
     )
 
 
-async def validation_error(req: Request, exc: RequestValidationError) -> JSONResponse:
+async def validation_error(
+    req: Request,
+    exc: RequestValidationError,
+) -> JSONResponse:
     """Parse the validation error and return response with well readable details.
 
     :param req: The original starlette request
@@ -86,7 +89,10 @@ async def detail_exists(req: Request, exc: DetailExists) -> JSONResponse:
     )
 
 
-async def not_authenticated(req: Request, exc: NotAuthenticated) -> JSONResponse:
+async def not_authenticated(
+    req: Request,
+    exc: NotAuthenticated,
+) -> JSONResponse:
     """Return invalid access token response.
 
     :param req: The original starlette request

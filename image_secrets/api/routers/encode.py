@@ -3,7 +3,15 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional, Union
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
+from fastapi import (
+    APIRouter,
+    Depends,
+    File,
+    Form,
+    HTTPException,
+    UploadFile,
+    status,
+)
 from fastapi.responses import FileResponse, JSONResponse
 
 from image_secrets.api import dependencies, exceptions, responses

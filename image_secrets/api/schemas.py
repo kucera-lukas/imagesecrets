@@ -6,7 +6,9 @@ from image_secrets.settings import URL_KEY_ALIAS
 
 def pretty_key(key: str) -> str:
     """Return a pretty key if specified alias for it exists, otherwise camelcase."""
-    return URL_KEY_ALIAS.get(key) or "".join(w.capitalize() for w in key.split("_"))
+    return URL_KEY_ALIAS.get(key) or "".join(
+        w.capitalize() for w in key.split("_")
+    )
 
 
 class Info(BaseModel):

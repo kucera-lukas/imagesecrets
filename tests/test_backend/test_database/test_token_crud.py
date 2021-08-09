@@ -110,7 +110,10 @@ async def test_create_new(
 
     url_safe.assert_called_once_with()
     hash_.assert_called_once_with(token_return)
-    mock_crud_create.assert_called_once_with(token_hash=hash_return, owner_id=owner_id)
+    mock_crud_create.assert_called_once_with(
+        token_hash=hash_return,
+        owner_id=owner_id,
+    )
     assert result == token_return
 
 
@@ -142,7 +145,10 @@ async def test_create_new_with_delete(
     url_safe.assert_called_once_with()
     hash_.assert_called_once_with(token_return)
     assert mock_crud_create.call_count == 2
-    mock_crud_create.assert_called_with(token_hash=hash_return, owner_id=owner_id)
+    mock_crud_create.assert_called_with(
+        token_hash=hash_return,
+        owner_id=owner_id,
+    )
     mock_crud_delete.assert_called_once_with(owner_id=owner_id)
 
 
@@ -155,9 +161,15 @@ async def test_delete(insert_token: Token) -> None:
 
 
 @pytest.mark.asyncio
-async def test_get_owner_id_ok(mocker: MockFixture, insert_token: Token) -> None:
+async def test_get_owner_id_ok(
+    mocker: MockFixture,
+    insert_token: Token,
+) -> None:
     """Test successful get_owner_id function call."""
-    auth = mocker.patch("image_secrets.backend.password.auth", return_value=True)
+    auth = mocker.patch(
+        "image_secrets.backend.password.auth",
+        return_value=True,
+    )
 
     token = "test_token"
     result = await crud.get_owner_id(token)
@@ -167,9 +179,15 @@ async def test_get_owner_id_ok(mocker: MockFixture, insert_token: Token) -> None
 
 
 @pytest.mark.asyncio
-async def test_get_owner_id_fail(mocker: MockFixture, insert_token: Token) -> None:
+async def test_get_owner_id_fail(
+    mocker: MockFixture,
+    insert_token: Token,
+) -> None:
     """Test failing get_owner_id function call."""
-    auth = mocker.patch("image_secrets.backend.password.auth", return_value=False)
+    auth = mocker.patch(
+        "image_secrets.backend.password.auth",
+        return_value=False,
+    )
 
     token = "test_token"
 

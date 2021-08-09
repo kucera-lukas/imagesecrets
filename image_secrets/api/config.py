@@ -5,7 +5,13 @@ import os
 from typing import cast
 
 from fastapi_mail import ConnectionConfig, config
-from pydantic import BaseSettings, DirectoryPath, EmailStr, HttpUrl, PostgresDsn
+from pydantic import (
+    BaseSettings,
+    DirectoryPath,
+    EmailStr,
+    HttpUrl,
+    PostgresDsn,
+)
 
 from image_secrets.settings import API_IMAGES, MESSAGE_DELIMITER, TEMPLATES
 

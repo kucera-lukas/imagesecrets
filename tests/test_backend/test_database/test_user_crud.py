@@ -62,7 +62,10 @@ async def test_get(mock_get, user: User) -> None:
 @pytest.mark.asyncio
 async def test_get_id(insert_user: User) -> None:
     """Test successful get_id function call."""
-    identifier = crud.DBIdentifier(column="username", value=insert_user.username)
+    identifier = crud.DBIdentifier(
+        column="username",
+        value=insert_user.username,
+    )
 
     result = await crud.get_id(identifier)
 
@@ -70,7 +73,11 @@ async def test_get_id(insert_user: User) -> None:
 
 
 @pytest.mark.asyncio
-async def test_create(mocker: MockFixture, mock_create: AsyncMock, user: User) -> None:
+async def test_create(
+    mocker: MockFixture,
+    mock_create: AsyncMock,
+    user: User,
+) -> None:
     """Test successful create function call."""
     from image_secrets.backend.database.user import schemas
 
@@ -155,14 +162,20 @@ async def test_update_with_password_hash(
 @pytest.mark.asyncio
 async def test_authenticate_ok(mocker: MockFixture, insert_user: User) -> None:
     """Test successful authenticate function call."""
-    auth = mocker.patch("image_secrets.backend.password.auth", return_value=True)
+    auth = mocker.patch(
+        "image_secrets.backend.password.auth",
+        return_value=True,
+    )
 
     result = await crud.authenticate(
         username=insert_user.username,
         password_=insert_user.password_hash,
     )
 
-    auth.assert_called_once_with(insert_user.password_hash, insert_user.password_hash)
+    auth.assert_called_once_with(
+        insert_user.password_hash,
+        insert_user.password_hash,
+    )
     assert result
 
 
@@ -172,14 +185,20 @@ async def test_authenticate_fail_password_match(
     insert_user: User,
 ) -> None:
     """Test failing authenticate function call due to not matching password and its hash."""
-    auth = mocker.patch("image_secrets.backend.password.auth", return_value=False)
+    auth = mocker.patch(
+        "image_secrets.backend.password.auth",
+        return_value=False,
+    )
 
     result = await crud.authenticate(
         username=insert_user.username,
         password_=insert_user.password_hash,
     )
 
-    auth.assert_called_once_with(insert_user.password_hash, insert_user.password_hash)
+    auth.assert_called_once_with(
+        insert_user.password_hash,
+        insert_user.password_hash,
+    )
     assert not result
 
 

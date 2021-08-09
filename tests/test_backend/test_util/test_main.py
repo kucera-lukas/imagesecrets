@@ -7,7 +7,6 @@ from typing import TYPE_CHECKING
 import pytest
 from tortoise.exceptions import IntegrityError
 
-from image_secrets.backend.regex import INTEGRITY_FIELD
 from image_secrets.backend.util import main
 
 if TYPE_CHECKING:
@@ -47,7 +46,10 @@ def test_partial_init() -> None:
             {"test1": "ok1", "test2": None, "test3": "ok3"},
             {"test1": "ok1", "test3": "ok3"},
         ),
-        ({"field1": None, "field2": None, "field3": "value3"}, {"field3": "value3"}),
+        (
+            {"field1": None, "field2": None, "field3": "value3"},
+            {"field3": "value3"},
+        ),
     ],
 )
 def test_exclude_unset_dict(init: dict, result: dict) -> None:

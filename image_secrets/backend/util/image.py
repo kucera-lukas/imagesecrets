@@ -38,7 +38,10 @@ def read_bytes(data_: bytes, /) -> TBytesIO:
     return BytesIO(data_)
 
 
-def data(file: Union[TBytesIO, Path], /) -> tuple[tuple[int, int, int], ArrayLike]:
+def data(
+    file: Union[TBytesIO, Path],
+    /,
+) -> tuple[tuple[int, int, int], ArrayLike]:
     """Return numpy array of the given image.
 
     :param file: The path to the image from which to extract the data

@@ -39,7 +39,10 @@ def test_get_empty(
     assert response.headers["content-length"] == "2"
 
 
-def test_get(api_client: TestClient, auth_token: tuple[dict[str, str], User]) -> None:
+def test_get(
+    api_client: TestClient,
+    auth_token: tuple[dict[str, str], User],
+) -> None:
     """Test successful get request."""
     header = auth_token[0]
     user = auth_token[1]
@@ -224,4 +227,7 @@ def test_get_images_404(
     assert response.status_code == 404
     assert response.reason == "Not Found"
     json_ = response.json()
-    assert json_["detail"] == f"no encoded image(s) with name {image_name!r} found"
+    assert (
+        json_["detail"]
+        == f"no encoded image(s) with name {image_name!r} found"
+    )

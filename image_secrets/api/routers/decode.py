@@ -3,7 +3,15 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional, Union
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
+from fastapi import (
+    APIRouter,
+    Depends,
+    File,
+    Form,
+    HTTPException,
+    UploadFile,
+    status,
+)
 from fastapi.responses import JSONResponse
 
 from image_secrets.api import dependencies, exceptions, responses
@@ -115,7 +123,10 @@ async def post(
         image_name=file.filename,
         filename=fp.name,
     )
-    db_image = await crud.create_decoded(owner_id=current_user.id, data=db_schema)
+    db_image = await crud.create_decoded(
+        owner_id=current_user.id,
+        data=db_schema,
+    )
     schema: schemas.Image = await schemas.Image.from_tortoise_orm(db_image)
     return schema
 

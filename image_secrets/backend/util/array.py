@@ -9,7 +9,11 @@ if TYPE_CHECKING:
     from numpy.typing import ArrayLike
 
 
-def message_bit(message: str, delimiter: str, bits: int) -> tuple[ArrayLike, int]:
+def message_bit(
+    message: str,
+    delimiter: str,
+    bits: int,
+) -> tuple[ArrayLike, int]:
     """Return a message turned into bits in an array.
 
     :param message: Main message to encode

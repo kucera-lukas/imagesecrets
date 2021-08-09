@@ -7,11 +7,14 @@ from typing import TYPE_CHECKING
 import numpy as np
 import pytest
 
-from image_secrets.backend.util.image import data, png_filetype, read_bytes, save_array
+from image_secrets.backend.util.image import (
+    data,
+    png_filetype,
+    read_bytes,
+    save_array,
+)
 
 if TYPE_CHECKING:
-    from pathlib import Path
-
     from numpy.typing import ArrayLike
     from py.path import local
 

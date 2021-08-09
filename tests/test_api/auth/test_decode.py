@@ -95,7 +95,10 @@ def test_post(
     response = api_client.post(
         URL,
         files=api_image_file,
-        data={"custom-delimiter": delimiter, "least-significant-bit-amount": lsb_n},
+        data={
+            "custom-delimiter": delimiter,
+            "least-significant-bit-amount": lsb_n,
+        },
         headers=header,
     )
 
@@ -135,7 +138,10 @@ def test_post_200(
     response = api_client.post(
         URL,
         files=api_image_file,
-        data={"custom-delimiter": "delimiter", "least-significant-bit-amount": 1},
+        data={
+            "custom-delimiter": "delimiter",
+            "least-significant-bit-amount": 1,
+        },
         headers=header,
     )
 
@@ -213,4 +219,7 @@ def test_get_images_404(
     assert response.status_code == 404
     assert response.reason == "Not Found"
     json_ = response.json()
-    assert json_["detail"] == f"no decoded image(s) with name {image_name!r} found"
+    assert (
+        json_["detail"]
+        == f"no decoded image(s) with name {image_name!r} found"
+    )

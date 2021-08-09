@@ -10,7 +10,11 @@ if TYPE_CHECKING:
     from pydantic import EmailStr
 
 
-async def send_welcome(client: FastMail, recipient: EmailStr, username: str) -> None:
+async def send_welcome(
+    client: FastMail,
+    recipient: EmailStr,
+    username: str,
+) -> None:
     """Send a welcome email.
 
     :param client: Email SMTP client

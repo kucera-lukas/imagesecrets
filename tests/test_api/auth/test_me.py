@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import asyncio
-from json import JSONDecodeError
 from typing import TYPE_CHECKING
 
 import pytest
@@ -17,7 +16,10 @@ if TYPE_CHECKING:
 URL = "/users/me"
 
 
-def test_get(api_client: TestClient, auth_token: tuple[dict[str, str], User]) -> None:
+def test_get(
+    api_client: TestClient,
+    auth_token: tuple[dict[str, str], User],
+) -> None:
     """Test the get request."""
     header = auth_token[0]
     user = auth_token[1]
@@ -100,7 +102,11 @@ def test_patch_409(
 
     loop = asyncio.get_event_loop()
     loop.run_until_complete(
-        User.create(username=username, email="email@email.com", password_hash="pwd"),
+        User.create(
+            username=username,
+            email="email@email.com",
+            password_hash="pwd",
+        ),
     )
 
     header = auth_token[0]
@@ -232,7 +238,10 @@ def test_password_put_401(
         "image_secrets.backend.database.user.crud.authenticate",
         return_value=False,
     )
-    hash_ = mocker.patch("image_secrets.backend.password.hash_", return_value="...")
+    hash_ = mocker.patch(
+        "image_secrets.backend.password.hash_",
+        return_value="...",
+    )
 
     header = auth_token[0]
     user = auth_token[1]
@@ -243,7 +252,10 @@ def test_password_put_401(
         data={"old": "old_password", "new": "new_password"},
     )
 
-    auth.assert_called_once_with(username=user.username, password_="old_password")
+    auth.assert_called_once_with(
+        username=user.username,
+        password_="old_password",
+    )
     hash_.assert_not_called()
 
     assert response.status_code == 401

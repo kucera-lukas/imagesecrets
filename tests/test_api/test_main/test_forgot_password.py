@@ -12,9 +12,16 @@ if TYPE_CHECKING:
 URL = "/users/forgot-password"
 
 
-def test_ok(api_client: TestClient, mocker: MockFixture, insert_user: User) -> None:
+def test_ok(
+    api_client: TestClient,
+    mocker: MockFixture,
+    insert_user: User,
+) -> None:
     """Test a successful request."""
-    bg_tasks = mocker.patch("fastapi.BackgroundTasks.add_task", return_value=None)
+    bg_tasks = mocker.patch(
+        "fastapi.BackgroundTasks.add_task",
+        return_value=None,
+    )
 
     response = api_client.post(URL, data={"email": insert_user.email})
 

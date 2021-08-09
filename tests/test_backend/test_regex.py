@@ -23,7 +23,11 @@ def test_integrity_properties() -> None:
     "full_string, match1, match2",
     [
         ("username)=(name) already exists.", "username", "name"),
-        ("123456(email)=(email@email.com) already exists.", "email", "email@email.com"),
+        (
+            "123456(email)=(email@email.com) already exists.",
+            "email",
+            "email@email.com",
+        ),
         (
             " KEY   (email)=(imagesecrets@email.org) already exists.",
             "email",

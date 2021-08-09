@@ -69,7 +69,10 @@ def test_openapi_schema(api_settings: Settings) -> None:
     assert info["x-logo"] == {"url": api_settings.icon_url}
 
 
-def test_openapi_schema_cached(mocker: MockFixture, api_settings: Settings) -> None:
+def test_openapi_schema_cached(
+    mocker: MockFixture,
+    api_settings: Settings,
+) -> None:
     """Test the that OpenAPI schema is generated only once and then cached."""
     from image_secrets.api.interface import app
 

@@ -47,8 +47,14 @@ def test_api(
     """Test the api encoding function."""
     tmpdir = Path(tmpdir.mkdir("tmp/"))
 
-    mocker.patch("image_secrets.backend.util.image.read_bytes", return_value=...)
-    mocker.patch("image_secrets.backend.encode.main", return_value=test_image_array)
+    mocker.patch(
+        "image_secrets.backend.util.image.read_bytes",
+        return_value=...,
+    )
+    mocker.patch(
+        "image_secrets.backend.encode.main",
+        return_value=test_image_array,
+    )
 
     result = encode.api(..., ..., ..., ..., ..., image_dir=tmpdir)
 

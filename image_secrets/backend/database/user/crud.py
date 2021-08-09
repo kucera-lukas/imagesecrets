@@ -43,7 +43,9 @@ async def get_id(identifier: DBIdentifier) -> int:
     :param identifier: DBIdentifier to identify which user to return
 
     """
-    result: models.User = await models.User.get(**identifier.to_dict()).only("id")
+    result: models.User = await models.User.get(**identifier.to_dict()).only(
+        "id",
+    )
     return int(result.id)
 
 

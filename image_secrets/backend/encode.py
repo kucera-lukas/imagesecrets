@@ -37,8 +37,7 @@ def api(
     """
     data = image.read_bytes(file)
     arr = main(message, data, delimiter, lsb_n, reverse)
-    fp = image.save_array(arr, image_dir=image_dir)
-    return fp
+    return image.save_array(arr, image_dir=image_dir)
 
 
 def main(
@@ -68,7 +67,9 @@ def main(
         )
 
     if reverse:  # pragma: no cover
-        msg_arr, img_arr = np.flip(msg_arr), np.flip(img_arr)  # all axes get flipped
+        msg_arr, img_arr = np.flip(msg_arr), np.flip(
+            img_arr,
+        )  # all axes get flipped
 
     enc_arr = array.edit_column(
         unpacked_arr,

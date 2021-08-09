@@ -10,11 +10,19 @@ Response = dict[int, dict[str, Any]]
 AUTHORIZATION: Response = {
     401: {"model": Message, "description": "Authorization Error"},
 }
-FORBIDDEN: Response = {403: {"model": Message, "description": "Authorization Error"}}
+FORBIDDEN: Response = {
+    403: {"model": Message, "description": "Authorization Error"},
+}
 NOT_FOUND: Response = {404: {"model": Message, "description": "Not Found"}}
-CONFLICT: Response = {409: {"model": Conflict, "description": "Conflict Error"}}
-MEDIA: Response = {415: {"model": Message, "description": "Unsupported Media Type"}}
-VALIDATION: Response = {422: {"model": Field, "description": "Validation Error"}}
+CONFLICT: Response = {
+    409: {"model": Conflict, "description": "Conflict Error"},
+}
+MEDIA: Response = {
+    415: {"model": Message, "description": "Unsupported Media Type"},
+}
+VALIDATION: Response = {
+    422: {"model": Field, "description": "Validation Error"},
+}
 
 MESSAGE_NOT_FOUND: Response = {
     200: {"model": Message, "description": "Nothing Decoded"},

@@ -8,7 +8,14 @@ from __future__ import annotations
 
 from typing import Optional
 
-from fastapi import APIRouter, BackgroundTasks, Depends, Form, HTTPException, status
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Depends,
+    Form,
+    HTTPException,
+    status,
+)
 from pydantic import EmailStr
 from tortoise.exceptions import IntegrityError
 
@@ -16,7 +23,10 @@ from image_secrets.api import dependencies, exceptions, responses
 from image_secrets.api import schemas as api_schemas
 from image_secrets.api.routers.user.main import manager
 from image_secrets.backend.database.user import crud, models, schemas
-from image_secrets.backend.util.main import ExcludeUnsetDict, parse_unique_integrity
+from image_secrets.backend.util.main import (
+    ExcludeUnsetDict,
+    parse_unique_integrity,
+)
 
 router = APIRouter(
     prefix="/users",
@@ -80,10 +90,15 @@ async def patch(
     :raises DetailExists: if either of the new values are already claimed in the database
 
     """
-    update_dict = ExcludeUnsetDict(username=username, email=email).exclude_unset()
+    update_dict = ExcludeUnsetDict(
+        username=username,
+        email=email,
+    ).exclude_unset()
     if not update_dict:
         # no values to update so we can return right away
-        schema: schemas.User = await schemas.User.from_tortoise_orm(current_user)
+        schema: schemas.User = await schemas.User.from_tortoise_orm(
+            current_user,
+        )
         return schema
 
     try:
@@ -155,7 +170,10 @@ async def password_put(
     :param new: New password of the currently authenticated
 
     """
-    auth = await crud.authenticate(username=current_user.username, password_=old)
+    auth = await crud.authenticate(
+        username=current_user.username,
+        password_=old,
+    )
     if not auth:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

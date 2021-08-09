@@ -28,7 +28,12 @@ _UserFull: Type[PydanticModel] = pydantic_model_creator(  # type: ignore
 class UserBase(_UserBase):  # type: ignore
     """Base User schema."""
 
-    username: str = Field(..., min_length=6, max_length=128, regex=USERNAME_STR)
+    username: str = Field(
+        ...,
+        min_length=6,
+        max_length=128,
+        regex=USERNAME_STR,
+    )
     email: EmailStr
 
 

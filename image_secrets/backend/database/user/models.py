@@ -8,7 +8,12 @@ class User(models.Model):
     """Tortoise user model."""
 
     id = fields.IntField(pk=True, index=True)
-    username = fields.CharField(index=True, unique=True, min_length=6, max_length=128)
+    username = fields.CharField(
+        index=True,
+        unique=True,
+        min_length=6,
+        max_length=128,
+    )
     email = fields.TextField()
     password_hash = fields.CharField(max_length=128)
 
