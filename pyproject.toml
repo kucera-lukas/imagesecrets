@@ -46,7 +46,7 @@ tortoise-orm = { extras = ["asyncpg"], version = "^0.17.2" }
 numpy = "^1.21.1"
 Pillow = "^8.2.0"
 bcrypt = "^3.2.0"
-python-dotenv = "^0.17.1"
+python-dotenv = "^0.19.0"
 python-magic = "^0.4.24"
 Jinja2 = "^3.0.1"
 
