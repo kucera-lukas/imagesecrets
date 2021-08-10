@@ -42,6 +42,9 @@ python-multipart = "^0.0.5"
 aiofiles = "^0.7.0"
 requests = "^2.26.0"
 uvicorn = "^0.13.4"
+piccolo = { extras = ["postgres", "orjson", "uvloop"], version = "^0.30.0" }
+piccolo-admin = "^0.14.0"
+piccolo-api = "^0.22.0"
 tortoise-orm = { extras = ["asyncpg"], version = "^0.17.2" }
 numpy = "^1.21.1"
 Pillow = "^8.2.0"
