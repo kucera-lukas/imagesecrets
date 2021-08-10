@@ -1,4 +1,4 @@
-name: Promote Staging to Production
+name: Production
 
 on:
   release:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Heroku Pipeline Promote
         uses: tiltshift/heroku-promote-app@v1
