@@ -1,9 +1,6 @@
 name: Test Suite
 
-on:
-  push:
-  pull_request:
-    types: [opened, synchronize]
+on: [push, pull_request]
 
 jobs:
   test:
@@ -19,7 +16,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}

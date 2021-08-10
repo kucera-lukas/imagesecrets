@@ -1,0 +1,22 @@
+name: Promote Staging to Production
+
+on:
+  release:
+    types:
+      - created
+
+  workflow_dispatch:
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: action/checkout@v2
+
+      - name: Heroku Pipeline Promote
+        uses: tiltshift/heroku-promote-app@v1
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.STAGING_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
