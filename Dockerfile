@@ -1,7 +1,5 @@
 FROM python:3.9-slim
 
-MAINTAINER lukas.kucera.g@protonmail.com
-
 # python-magic linux only depenency
 RUN apt-get update && apt-get install -y libmagic1
 
