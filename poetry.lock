@@ -272,7 +272,7 @@ test = ["pytest (==5.4.3)", "pytest-cov (==2.10.0)", "pytest-asyncio (>=0.14.0,<
 
 [[package]]
 name = "fastapi-login"
-version = "1.6.0"
+version = "1.6.3"
 description = ""
 category = "main"
 optional = false
@@ -866,7 +866,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ed8d41dcb35c80db89ddad59f5ba9110bc0fd390c0bb5fb0816700a908231ce5"
+content-hash = "0efaf0d7d11a4376a89dc7d7ba661287d8dfaee57cc393c26e2b1560194f1839"
 
 [metadata.files]
 aiofiles = [
@@ -1084,8 +1084,8 @@ fastapi = [
     {file = "fastapi-0.65.1.tar.gz", hash = "sha256:478b7e0cbb52c9913b9903d88ae14195cb8a479c4596e0b2f2238d317840a7dc"},
 ]
 fastapi-login = [
-    {file = "fastapi-login-1.6.0.tar.gz", hash = "sha256:b6beaf79c5f25dbad6e0cc21f2f35911bab8e06289d7e2dda3d64df9eab6917c"},
-    {file = "fastapi_login-1.6.0-py3-none-any.whl", hash = "sha256:e2f92f6fb8100d50b0ee0d0f066013a04330ed03f9895ab4a775da8eeb5cc442"},
+    {file = "fastapi-login-1.6.3.tar.gz", hash = "sha256:eed72b5846992da60ceb804d68864759fec6095001b29bacb003cc2eb912cc8c"},
+    {file = "fastapi_login-1.6.3-py3-none-any.whl", hash = "sha256:c13373bdd451655c4c25fa3e509864658f4c370e8bd311da3839d16e917ed9f6"},
 ]
 fastapi-mail = [
     {file = "fastapi-mail-0.3.7.tar.gz", hash = "sha256:639d18b9ca8477bab4a8c20fdf2d01672a12761cb2d08dac4a87154cd581e9f6"},
