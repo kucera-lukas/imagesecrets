@@ -2,5 +2,5 @@
 
 SRC="image_secrets"
 
-poetry run mypy $SRC
-poetry run pytest --cov=$SRC --cov-report=xml
+poetry run mypy $SRC --verbose
+poetry run pytest --verbose --cov=$SRC --cov-report=xml
