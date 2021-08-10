@@ -1,7 +1,7 @@
 # ImageSecrets
 
+![Build](https://github.com/kucera-lukas/imagesecrets/actions/workflows/build.yml/badge.svg)
 ![Test Suite](https://github.com/kucera-lukas/imagesecrets/actions/workflows/test.yml/badge.svg)
-![Release](https://github.com/kucera-lukas/imagesecrets/actions/workflows/release.yml/badge.svg)
 [![codecov](https://codecov.io/gh/kucera-lukas/imagesecrets/branch/master/graph/badge.svg?token=BUUQN2WP9K)](https://codecov.io/gh/kucera-lukas/imagesecrets)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/kucera-lukas/imagesecrets.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kucera-lukas/imagesecrets/context:python)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/kucera-lukas/imagesecrets.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kucera-lukas/imagesecrets/alerts/)
