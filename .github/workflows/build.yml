@@ -1,22 +1,25 @@
-name: Production
+name: Build
 
 on:
-  release:
-    types:
-      - created
+  push:
+    branches:
+      - master
+    tags:
+      - v*.*.*
 
   workflow_dispatch:
 
 jobs:
-  promote:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout
         uses: actions/checkout@v2
 
-      - name: Heroku Pipeline Promote
-        uses: tiltshift/heroku-promote-app@v1
+      - name: Heroku Deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.STAGING_APP_NAME }}
+          heroku_app_name: ${{ secrets.PRODUCTION_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          usedocker: true
