@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-echo "running pytest for image_secrets with coverage"
-poetry run pytest --cov=image_secrets
+SRC="image_secrets"
+
+poetry run mypy $SRC
+poetry run pytest --cov=$SRC --cov-report=xml
