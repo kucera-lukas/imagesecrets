@@ -10,4 +10,11 @@ from piccolo.engine.postgres import PostgresEngine
 load_dotenv()
 
 DB = PostgresEngine(config={"dsn": os.environ["DATABASE_URL"]})
-APP_REGISTRY = AppRegistry(apps=["imagesecrets.piccolo_app"])
+
+
+APP_REGISTRY = AppRegistry(
+    apps=[
+        "imagesecrets.piccolo_app",
+        "piccolo.apps.user.piccolo_app",
+    ],
+)
