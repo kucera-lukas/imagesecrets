@@ -1,4 +1,5 @@
 """Module with functions to encode text into images."""
+
 from __future__ import annotations
 
 from pathlib import Path

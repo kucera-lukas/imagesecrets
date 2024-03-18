@@ -1,4 +1,5 @@
 """Test the base schemas module."""
+
 import pytest
 
 from imagesecrets.schemas import base
