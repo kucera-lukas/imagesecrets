@@ -1,4 +1,5 @@
 """Test the module used for encoding."""
+
 from __future__ import annotations
 
 from pathlib import Path

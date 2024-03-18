@@ -1,4 +1,5 @@
 """User database models."""
+
 from sqlalchemy import CheckConstraint, Column, String
 from sqlalchemy.orm import relationship, validates
 

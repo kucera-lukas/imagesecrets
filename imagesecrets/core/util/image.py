@@ -1,4 +1,5 @@
 """Utility functions for working with images."""
+
 from __future__ import annotations
 
 from io import BytesIO

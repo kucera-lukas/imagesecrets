@@ -1,4 +1,5 @@
 """Test the register request in the users router."""
+
 from __future__ import annotations
 
 from datetime import datetime
