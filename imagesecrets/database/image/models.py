@@ -1,4 +1,5 @@
 """Image database models."""
+
 from __future__ import annotations
 
 from sqlalchemy import Column, ForeignKey, Integer, SmallInteger, String

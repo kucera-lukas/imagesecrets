@@ -1,4 +1,5 @@
 """Session wide fixtures."""
+
 from __future__ import annotations
 
 import asyncio
@@ -110,8 +111,7 @@ def async_context_manager():
         async def __aenter__(self):
             return self.obj
 
-        async def __aexit__(self, exc_type, exc_val, exc_tb):
-            ...
+        async def __aexit__(self, exc_type, exc_val, exc_tb): ...
 
     return AsyncContextManager(obj=None)
 
