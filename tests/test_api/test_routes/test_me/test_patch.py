@@ -1,4 +1,5 @@
 """Test the me router with authenticated user."""
+
 from __future__ import annotations
 
 from datetime import datetime

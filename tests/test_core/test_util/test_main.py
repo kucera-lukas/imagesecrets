@@ -1,4 +1,5 @@
 """Test the util_main module."""
+
 from __future__ import annotations
 
 import string

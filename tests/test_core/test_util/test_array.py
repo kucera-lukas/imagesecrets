@@ -1,4 +1,5 @@
 """Test the array_util module."""
+
 from __future__ import annotations
 
 import functools as fn
