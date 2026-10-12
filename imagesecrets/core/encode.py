@@ -1,4 +1,5 @@
 """Module with functions to encode text into images."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -10,9 +11,9 @@ from imagesecrets.constants import API_IMAGES, MESSAGE_DELIMITER
 from imagesecrets.core.util import array, image
 
 if TYPE_CHECKING:
+    from _io import BytesIO
     from typing import Union
 
-    from _io import BytesIO
     from numpy.typing import ArrayLike
 
 

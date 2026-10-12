@@ -4,6 +4,7 @@ Note: manager dependency is in every route because access to the current user in
     relevant github discussion: https://github.com/tiangolo/fastapi/issues/424#issuecomment-584169213
 
 """
+
 from __future__ import annotations
 
 from typing import Optional

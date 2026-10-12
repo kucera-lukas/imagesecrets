@@ -1,4 +1,5 @@
 """Application Programming Interface."""
+
 from __future__ import annotations
 
 from fastapi import FastAPI

@@ -1,4 +1,5 @@
 """Main user router."""
+
 from __future__ import annotations
 
 import asyncio
