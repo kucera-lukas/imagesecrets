@@ -1,4 +1,5 @@
 """Test the regex module."""
+
 import re
 
 import pytest

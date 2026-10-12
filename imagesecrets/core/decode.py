@@ -1,4 +1,5 @@
 """Module with functions to decode text from images."""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
