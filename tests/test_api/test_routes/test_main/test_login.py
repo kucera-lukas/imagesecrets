@@ -1,4 +1,5 @@
 """Test the login post request on the users router."""
+
 from __future__ import annotations
 
 from collections import Counter
