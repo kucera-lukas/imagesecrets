@@ -1,4 +1,5 @@
 """Simple CLI tool to update version of the application."""
+
 from __future__ import annotations
 
 from argparse import ArgumentParser
