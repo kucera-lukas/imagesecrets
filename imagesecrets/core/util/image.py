@@ -1,4 +1,5 @@
 """Utility functions for working with images."""
+
 from __future__ import annotations
 
 from io import BytesIO
@@ -12,10 +13,10 @@ from imagesecrets.constants import API_IMAGES
 from imagesecrets.core.util import main
 
 if TYPE_CHECKING:
+    from _io import BytesIO as TBytesIO
     from pathlib import Path
     from typing import Union
 
-    from _io import BytesIO as TBytesIO
     from numpy.typing import ArrayLike
 
 
